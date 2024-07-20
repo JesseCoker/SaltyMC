@@ -44,12 +44,6 @@ public class Nyx extends CustomBoss
     }
 
     @Override
-    public int getBossRange()
-    {
-        return 100;
-    }
-
-    @Override
     protected int getMaxHealth()
     {
         return 280;
@@ -351,8 +345,7 @@ public class Nyx extends CustomBoss
         equipItemInMainHand(new ItemStack(Material.TRIDENT));
         for (int wave = 0; wave < NyxSettings.NUMBER_OF_TRIDENT_WAVES; ++wave)
         {
-            int finalWave = wave;
-            Bukkit.getScheduler().runTaskLater(plugin, ()->spawnTridentWave(), wave * NyxSettings.TIME_BETWEEN_TRIDENT_WAVES);
+            Bukkit.getScheduler().runTaskLater(plugin, this::spawnTridentWave, wave * NyxSettings.TIME_BETWEEN_TRIDENT_WAVES);
         }
     }
 
@@ -449,13 +442,22 @@ public class Nyx extends CustomBoss
         }
     }
 
+    private void dealKB(Player player, Location source)
+    {
+        float horizontalPower = 2.8f;
+        float verticalPower = 1.4f;
+        Vector playerVector = player.getLocation().toVector();
+        Vector sourceVector = source.toVector();
+        player.setVelocity(playerVector.subtract(sourceVector).normalize().multiply(horizontalPower).setY(verticalPower));
+    }
+
     private void dealTNTKB(Entity tnt)
     {
         for (Player player : Bukkit.getOnlinePlayers())
         {
             if (tnt.getLocation().distance(player.getLocation()) < NyxSettings.TNT_DAMAGE_RANGE)
             {
-                dealKB(player, tnt.getLocation(), 2.8f);
+                dealKB(player, tnt.getLocation());
             }
         }
     }

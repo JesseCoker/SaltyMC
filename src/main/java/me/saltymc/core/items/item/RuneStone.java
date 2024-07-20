@@ -95,15 +95,6 @@ public class RuneStone extends CustomItem
 
     private final String runeKey = "runestone-level";
 
-    private boolean hasAnyRunes(ItemStack itemStack)
-    {
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        PersistentDataContainer pdc = itemMeta.getPersistentDataContainer();
-        NamespacedKey namespacedKey = new NamespacedKey(plugin, runeKey);
-        Integer runeCount = pdc.get(namespacedKey, PersistentDataType.INTEGER);
-        return runeCount != null;
-    }
-
     private boolean hasMaxRunes(ItemStack itemStack)
     {
         ItemMeta itemMeta = itemStack.getItemMeta();

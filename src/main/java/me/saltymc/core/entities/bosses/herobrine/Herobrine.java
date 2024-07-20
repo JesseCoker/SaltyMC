@@ -35,12 +35,6 @@ public class Herobrine extends CustomBoss
     }
 
     @Override
-    public int getBossRange()
-    {
-        return 100;
-    }
-
-    @Override
     protected int getMaxHealth()
     {
         return 600;

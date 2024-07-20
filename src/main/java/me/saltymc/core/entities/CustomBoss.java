@@ -39,15 +39,23 @@ abstract public class CustomBoss implements Listener
 
     // Abstracts
     abstract protected EntityType getEntityType();
-    abstract public int getBossRange();
+
     abstract protected int getMaxHealth();
+
     abstract protected double getMovementSpeed();
+
     abstract protected TextComponent getBossName();
+
     abstract protected BossBar.Color getBossBarColor();
+
     abstract protected BossBar.Overlay getBossBarOverlay();
+
     abstract protected void setup();
+
     abstract protected void giveArmor();
+
     abstract protected void setRewards();
+
     abstract protected void tick();
 
     public CustomBoss(Main plugin)
@@ -73,6 +81,11 @@ abstract public class CustomBoss implements Listener
 
         BukkitScheduler scheduler = plugin.getServer().getScheduler();
         taskId = scheduler.scheduleSyncRepeatingTask(plugin, new BossTick(), 0L, TICK_RATE);
+    }
+
+    public int getBossRange()
+    {
+        return 100;
     }
 
     public boolean isAlive()
@@ -213,13 +226,6 @@ abstract public class CustomBoss implements Listener
         Vector bossVector = getEntity().getLocation().toVector();
         Vector targetVector = target.toVector();
         return getEntity().launchProjectile(projectile, targetVector.subtract(bossVector).normalize().multiply(speed));
-    }
-
-    protected void dealKB(Player player, Location source, float power)
-    {
-        Vector playerVector = player.getLocation().toVector();
-        Vector sourceVector = source.toVector();
-        player.setVelocity(playerVector.subtract(sourceVector).normalize().multiply(power).setY(1.4f));
     }
 
     protected void onDamageBoss(EntityDamageByEntityEvent event)

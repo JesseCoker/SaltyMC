@@ -84,7 +84,6 @@ public class BloodSword extends CustomItem
     @EventHandler
     public void onDamageEntity(EntityDamageByEntityEvent event)
     {
-        Entity damagee = event.getEntity();
         Entity damager = event.getDamager();
 
         if (damager instanceof Player)

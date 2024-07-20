@@ -51,12 +51,6 @@ public class Sidero extends CustomBoss
     }
 
     @Override
-    public int getBossRange()
-    {
-        return 100;
-    }
-
-    @Override
     protected int getMaxHealth()
     {
         return 300;
