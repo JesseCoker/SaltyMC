@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="SaltyMC:jar">
-    <output-path>$USER_HOME$/Desktop/TestServer/plugins</output-path>
+    <output-path>$USER_HOME$/Desktop/Jesse/TestServer-1.20.6/plugins</output-path>
     <root id="archive" name="SaltyMC.jar">
       <element id="module-output" name="SaltyMC" />
     </root>

@@ -3,6 +3,7 @@ package me.saltymc.core.entities.bosses.herobrine;
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.entities.abilities.LavaRainAbility;
+import me.saltymc.core.entities.abilities.LightningAbility;
 import me.saltymc.core.entities.abilities.SpawnEggAbility;
 import me.saltymc.core.entities.abilities.TNTRainAbility;
 import org.bukkit.Material;
@@ -40,5 +41,6 @@ public class HerobrineMoveset
         if (nextMove == 0) new LavaRainAbility(plugin, customBoss).start();
         else if (nextMove == 1)  new TNTRainAbility(plugin, customBoss).start();
         else if (nextMove == 2)  new SpawnEggAbility(plugin, customBoss, spawnables).start();
+        else if (nextMove == 3)  new LightningAbility(plugin, customBoss).start();
     }
 }
