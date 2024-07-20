@@ -1,7 +1,7 @@
 package me.saltymc.core.entities.bosses.herobrine;
 
 import me.saltymc.core.entities.CustomBoss;
-import me.saltymc.core.entities.helpers.PositionHelper;
+import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;

@@ -2,10 +2,10 @@ package me.saltymc.core.entities.bosses.herobrine;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
-import me.saltymc.core.entities.abilities.LavaRainAbility;
-import me.saltymc.core.entities.abilities.LightningAbility;
-import me.saltymc.core.entities.abilities.SpawnEggAbility;
-import me.saltymc.core.entities.abilities.TNTRainAbility;
+import me.saltymc.core.entities.bosses.abilities.LavaRainAbility;
+import me.saltymc.core.entities.bosses.abilities.LightningAbility;
+import me.saltymc.core.entities.bosses.abilities.SpawnEggAbility;
+import me.saltymc.core.entities.bosses.abilities.TNTRainAbility;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 

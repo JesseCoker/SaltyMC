@@ -1,4 +1,4 @@
-package me.saltymc.core.entities.helpers;
+package me.saltymc.core.helpers;
 
 import org.bukkit.Location;
 

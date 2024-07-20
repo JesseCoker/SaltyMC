@@ -1,9 +1,9 @@
-package me.saltymc.core.entities.abilities;
+package me.saltymc.core.entities.bosses.abilities;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.entities.bosses.herobrine.HerobrineSettings;
-import me.saltymc.core.entities.helpers.PositionHelper;
+import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;

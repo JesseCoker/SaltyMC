@@ -1,4 +1,4 @@
-package me.saltymc.core.entities.abilities;
+package me.saltymc.core.entities.bosses.abilities;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;

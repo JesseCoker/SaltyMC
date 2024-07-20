@@ -2,7 +2,7 @@ package me.saltymc.core.entities.bosses.herobrine;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
-import me.saltymc.core.entities.abilities.BossAbility;
+import me.saltymc.core.entities.bosses.abilities.BossAbility;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

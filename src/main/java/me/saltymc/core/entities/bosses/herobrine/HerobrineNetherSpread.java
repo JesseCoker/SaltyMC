@@ -1,6 +1,6 @@
 package me.saltymc.core.entities.bosses.herobrine;
 
-import me.saltymc.core.entities.helpers.PositionHelper;
+import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
