@@ -1,0 +1,17 @@
+name: SaltyMC
+version: '1.0-SNAPSHOT'
+main: me.saltymc.core.Main
+api-version: '1.20'
+commands:
+  givecustomitem:
+    description: Gives a player a custom item.
+    usage: /givecustomitem player item
+  startstorm:
+    description: Starts a major storm if the user is holding a Drowned Trident.
+    usage: /startstorm
+  maxmygear:
+    description: Gives the best gear for fighting bosses.
+    usage: /maxmygear
+  summonboss:
+    description: Summons a boss.
+    usage: /summonboss bossname
