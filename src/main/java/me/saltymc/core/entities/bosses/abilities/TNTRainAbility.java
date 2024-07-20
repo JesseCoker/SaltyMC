@@ -6,6 +6,7 @@ import me.saltymc.core.entities.bosses.herobrine.HerobrineSettings;
 import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.*;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
@@ -20,6 +21,12 @@ public class TNTRainAbility extends BossAbility
 
     @Override
     public void start()
+    {
+        customBoss.equipItemInMainHand(new ItemStack(Material.TNT));
+        disperseTNT();
+    }
+
+    private void disperseTNT()
     {
         for (int index = 0; index < HerobrineSettings.Ability.TNT_PLACE_COUNT; ++index)
         {

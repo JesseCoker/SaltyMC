@@ -1,7 +1,6 @@
-package me.saltymc.core.entities.bosses.oldherobrine.summon;
+package me.saltymc.core.entities.bosses.herobrine;
 
 import me.saltymc.core.Main;
-import me.saltymc.core.entities.bosses.oldherobrine.OldHerobrine;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -19,13 +18,13 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-public class OldHerobrineSummonListener implements Listener
+public class HerobrineSummon implements Listener
 {
     private static Main plugin;
 
-    public OldHerobrineSummonListener(Main plugin)
+    public HerobrineSummon(Main plugin)
     {
-        OldHerobrineSummonListener.plugin = plugin;
+        HerobrineSummon.plugin = plugin;
     }
 
     private static final Vector[] relativeGoldBlockPositions = {
@@ -165,8 +164,8 @@ public class OldHerobrineSummonListener implements Listener
             copperSacraficeLocation = null;
             amethystSacraficeLocation = null;
             combuster.getWorld().strikeLightning(combuster.getLocation());
-            OldHerobrine herobrine = new OldHerobrine(plugin);
-            herobrine.summonHerobrine(combuster.getLocation());
+            Herobrine herobrine = new Herobrine(plugin);
+            herobrine.summon(combuster.getLocation());
         }
     }
 

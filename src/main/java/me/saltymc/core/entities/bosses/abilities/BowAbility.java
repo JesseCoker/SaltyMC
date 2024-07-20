@@ -2,6 +2,7 @@ package me.saltymc.core.entities.bosses.abilities;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -24,11 +25,13 @@ public class BowAbility extends BossAbility {
     public void start()
     {
         customBoss.equipItemInMainHand(bow);
-        shootAtNearestPlayer();
+        Bukkit.getScheduler().runTaskLater(plugin, this::shootAtNearestPlayer, ITEM_HOLD_DELAY);
     }
 
     public void shootAtNearestPlayer()
     {
+        if (!customBoss.isAlive()) return;
+
         LivingEntity bossEntity = customBoss.getEntity();
         Player nearestPlayer = customBoss.getNearestPlayer();
         if (nearestPlayer != null && bossEntity.hasLineOfSight(nearestPlayer))

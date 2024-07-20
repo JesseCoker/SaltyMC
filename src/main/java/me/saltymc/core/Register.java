@@ -1,6 +1,6 @@
 package me.saltymc.core;
 
-import me.saltymc.core.entities.bosses.oldherobrine.summon.OldHerobrineSummonListener;
+import me.saltymc.core.entities.bosses.herobrine.HerobrineSummon;
 import me.saltymc.core.entities.bosses.sidero.SideroSummon;
 import me.saltymc.core.commands.*;
 import me.saltymc.core.enchants.*;
@@ -33,7 +33,7 @@ public class Register
     public static void registerEvents(Main plugin)
     {
         PluginManager pluginManager = plugin.getServer().getPluginManager();
-        pluginManager.registerEvents(new OldHerobrineSummonListener(plugin), plugin);
+        pluginManager.registerEvents(new HerobrineSummon(plugin), plugin);
         pluginManager.registerEvents(new UnsafeEnchanting(plugin), plugin);
         pluginManager.registerEvents(new SideroSummon(plugin), plugin);
         pluginManager.registerEvents(new CustomLoot(plugin), plugin);

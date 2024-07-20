@@ -5,6 +5,7 @@ import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.entities.bosses.herobrine.HerobrineSettings;
 import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.*;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
@@ -19,6 +20,12 @@ public class LavaRainAbility extends BossAbility
 
     @Override
     public void start()
+    {
+        customBoss.equipItemInMainHand(new ItemStack(Material.LAVA_BUCKET));
+        disperseLava();
+    }
+
+    private void disperseLava()
     {
         for (int index = 0; index < HerobrineSettings.Ability.LAVA_PLACE_COUNT; ++index)
         {

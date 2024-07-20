@@ -8,6 +8,8 @@ public abstract class BossAbility
     protected final Main plugin;
     protected final CustomBoss customBoss;
 
+    protected static final long ITEM_HOLD_DELAY = 30L;
+
     public BossAbility(Main plugin, CustomBoss customBoss)
     {
         this.plugin = plugin;

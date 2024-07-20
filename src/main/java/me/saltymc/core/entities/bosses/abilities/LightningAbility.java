@@ -6,7 +6,9 @@ import me.saltymc.core.entities.bosses.herobrine.HerobrineSettings;
 import me.saltymc.core.helpers.PositionHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
@@ -22,6 +24,7 @@ public class LightningAbility extends BossAbility {
     @Override
     public void start()
     {
+        customBoss.equipItemInMainHand(new ItemStack(Material.TRIDENT));
         randomLightningStrikes();
     }
 
@@ -41,6 +44,7 @@ public class LightningAbility extends BossAbility {
 
     private void strikeLightning(Location location)
     {
+        if (!customBoss.isAlive()) return;
         World world = location.getWorld();
         world.strikeLightning(location);
     }
