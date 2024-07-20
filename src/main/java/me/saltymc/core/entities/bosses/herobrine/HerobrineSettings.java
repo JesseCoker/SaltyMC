@@ -45,6 +45,8 @@ public class HerobrineSettings
         public static final int LIGHTNING_STRIKE_COUNT = 16;
         public static final int MAX_LIGHTNING_STRIKE_RADIUS = 40;
         public static final int MAX_LIGHTNING_STRIKE_DELAY = 50;
+
+        public static final float BOW_POWER = 2.1f;
     }
 
     public static class BlockPunish

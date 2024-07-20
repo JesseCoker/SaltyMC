@@ -2,12 +2,11 @@ package me.saltymc.core.entities.bosses.herobrine;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
-import me.saltymc.core.entities.bosses.abilities.LavaRainAbility;
-import me.saltymc.core.entities.bosses.abilities.LightningAbility;
-import me.saltymc.core.entities.bosses.abilities.SpawnEggAbility;
-import me.saltymc.core.entities.bosses.abilities.TNTRainAbility;
+import me.saltymc.core.entities.bosses.abilities.*;
+import me.saltymc.core.items.weapon.HerobrineBow;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -42,5 +41,10 @@ public class HerobrineMoveset
         else if (nextMove == 1)  new TNTRainAbility(plugin, customBoss).start();
         else if (nextMove == 2)  new SpawnEggAbility(plugin, customBoss, spawnables).start();
         else if (nextMove == 3)  new LightningAbility(plugin, customBoss).start();
+        else if (nextMove == 4)
+        {
+            ItemStack herobrineBow = new HerobrineBow(plugin).getItem(1);
+            new BowAbility(plugin, customBoss, herobrineBow, HerobrineSettings.Ability.BOW_POWER).start();
+        }
     }
 }

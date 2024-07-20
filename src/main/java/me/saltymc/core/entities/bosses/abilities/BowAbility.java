@@ -1,20 +1,19 @@
-package me.saltymc.core.entities.bosses.herobrine;
+package me.saltymc.core.entities.bosses.abilities;
 
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
-import me.saltymc.core.entities.bosses.abilities.BossAbility;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-public class HerobrineBow extends BossAbility {
+public class BowAbility extends BossAbility {
 
     private final ItemStack bow;
     private final float velocity;
 
-    public HerobrineBow(Main plugin, CustomBoss customBoss, ItemStack bow, float velocity)
+    public BowAbility(Main plugin, CustomBoss customBoss, ItemStack bow, float velocity)
     {
         super(plugin, customBoss);
         this.bow = bow;
