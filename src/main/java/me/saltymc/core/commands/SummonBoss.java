@@ -3,7 +3,6 @@ package me.saltymc.core.commands;
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.bosses.herobrine.Herobrine;
 import me.saltymc.core.entities.bosses.nyx.Nyx;
-import me.saltymc.core.entities.bosses.oldherobrine.OldHerobrine;
 import me.saltymc.core.entities.bosses.sidero.Sidero;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,10 +27,6 @@ public class SummonBoss implements CommandExecutor
             Player player = (Player) commandSender;
             switch (strings[0])
             {
-                case "OLDHEROBRINE":
-                    OldHerobrine oldHerobrine = new OldHerobrine(plugin);
-                    oldHerobrine.summonHerobrine(player.getLocation());
-                    return true;
                 case "HEROBRINE":
                     Herobrine herobrine = new Herobrine(plugin);
                     herobrine.summon(player.getLocation());

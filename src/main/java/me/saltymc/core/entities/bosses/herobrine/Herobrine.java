@@ -3,6 +3,8 @@ package me.saltymc.core.entities.bosses.herobrine;
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.helpers.HeadGetter;
+import me.saltymc.core.items.weapon.HerobrineAxe;
+import me.saltymc.core.items.weapon.HerobrineSword;
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -120,7 +122,6 @@ public class Herobrine extends CustomBoss
             Zombie zombie = (Zombie) getEntity();
             zombie.setTarget(nearestPlayer);
             zombie.lookAt(nearestPlayer);
-
         }
     }
 
@@ -129,8 +130,21 @@ public class Herobrine extends CustomBoss
         Player nearestPlayer = getNearestPlayer();
         if (nearestPlayer != null && getDistanceToPlayer(nearestPlayer) <= HerobrineSettings.Attack.REACH)
         {
+            switchWeapon();
             nearestPlayer.setNoDamageTicks(0);
             getEntity().attack(nearestPlayer);
+        }
+    }
+
+    private void switchWeapon()
+    {
+        if (random.nextInt(HerobrineSettings.Attack.USE_AXE_CHANCE) == 0)
+        {
+            equipItemInMainHand(new HerobrineAxe(plugin).getItem(1));
+        }
+        else
+        {
+            equipItemInMainHand(new HerobrineSword(plugin).getItem(1));
         }
     }
 

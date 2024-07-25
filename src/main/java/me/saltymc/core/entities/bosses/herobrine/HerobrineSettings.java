@@ -10,6 +10,7 @@ public class HerobrineSettings
     public static class Attack
     {
         public static final float REACH = 3.6f;
+        public static final int USE_AXE_CHANCE = 10;
     }
 
     public static class Block
