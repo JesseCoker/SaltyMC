@@ -82,6 +82,10 @@ public class Herobrine extends CustomBoss
         if (entityEquipment != null)
         {
             entityEquipment.setHelmet(HeadGetter.getPlayerHead("Memerfront", Component.text("Herobrine's Head")));
+            entityEquipment.setChestplate(null);
+            entityEquipment.setLeggings(null);
+            entityEquipment.setBoots(null);
+
             entityEquipment.setHelmetDropChance(0.0f);
         }
     }
