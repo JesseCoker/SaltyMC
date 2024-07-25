@@ -90,6 +90,8 @@ public class Herobrine extends CustomBoss
             entityEquipment.setBoots(null);
 
             entityEquipment.setHelmetDropChance(0.0f);
+            entityEquipment.setItemInMainHandDropChance(0.0f);
+            entityEquipment.setItemInOffHandDropChance(0.0f);
         }
     }
 
@@ -188,7 +190,7 @@ public class Herobrine extends CustomBoss
         if (isThisEntity(event.getEntity()))
         {
             herobrineBlockAttack.cancelInvalidDamage(event);
-            dropDespisedSoul();
+            if (!event.isCancelled()) dropDespisedSoul();
         }
     }
 
