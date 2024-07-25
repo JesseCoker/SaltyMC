@@ -43,7 +43,8 @@ public class HerobrineMoveset
         else if (nextMove == 3)  new LightningAbility(plugin, customBoss).start();
         else if (nextMove == 4)  new FireItemAbility(plugin, customBoss).start();
         else if (nextMove == 5)  new SpellAbility(plugin, customBoss).start();
-        else if (nextMove == 6)
+        else if (nextMove == 6)  new EggAndSnowballAbility(plugin, customBoss).start();
+        else if (nextMove == 7)
         {
             ItemStack herobrineBow = new HerobrineBow(plugin).getItem(1);
             new BowAbility(plugin, customBoss, herobrineBow, HerobrineSettings.Ability.BOW_POWER).start();

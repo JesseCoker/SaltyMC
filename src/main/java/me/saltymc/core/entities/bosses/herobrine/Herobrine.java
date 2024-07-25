@@ -42,7 +42,7 @@ public class Herobrine extends CustomBoss
     @Override
     protected double getMaxHealth()
     {
-        return 600.0;
+        return 650.0;
     }
 
     @Override
