@@ -5,18 +5,21 @@ import me.saltymc.core.enchants.CustomEnchant;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SoulboundEnchant extends CustomEnchant
 {
@@ -64,25 +67,50 @@ public class SoulboundEnchant extends CustomEnchant
         return result;
     }
 
+    private boolean isKeepInventory(World world)
+    {
+        return Boolean.TRUE.equals(world.getGameRuleValue(GameRule.KEEP_INVENTORY));
+    }
+
+    private final HashMap<UUID, List<ItemStack>> soulboundItems = new HashMap<>();
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event)
     {
         Player player = event.getPlayer();
 
-        if (Boolean.TRUE.equals(player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY))) return;
+        if (isKeepInventory(player.getWorld())) return;
 
-        Inventory inventory = player.getInventory();
-        ItemStack[] inventoryContents = inventory.getContents();
-        for (ItemStack itemStack : inventoryContents)
-        {
-            if (itemStack != null && !hasEnchantment(itemStack))
-            {
-                player.getWorld().dropItemNaturally(player.getLocation(), itemStack);
-                inventory.remove(itemStack);
+        List<ItemStack> drops = event.getDrops();
+        ListIterator<ItemStack> iterator = drops.listIterator();
+
+        List<ItemStack> itemsToSave = new ArrayList<>();
+
+        while(iterator.hasNext()){
+
+            ItemStack itemStack = iterator.next();
+            if (hasEnchantment(itemStack)) {
+                itemsToSave.add(itemStack);
+                iterator.remove();
             }
         }
 
-        event.getDrops().clear();
-        event.setKeepInventory(true);
+        soulboundItems.put(player.getUniqueId(), itemsToSave);
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event)
+    {
+        Player player = event.getPlayer();
+        Inventory inventory = player.getInventory();
+        List<ItemStack> itemsToGive = soulboundItems.get(player.getUniqueId());
+        if (itemsToGive != null)
+        {
+            for (ItemStack itemStack : itemsToGive)
+            {
+                inventory.addItem(itemStack);
+            }
+            soulboundItems.remove(player.getUniqueId());
+        }
     }
 }
