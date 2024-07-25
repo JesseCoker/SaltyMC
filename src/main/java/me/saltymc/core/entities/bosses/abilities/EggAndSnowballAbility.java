@@ -56,7 +56,7 @@ public class EggAndSnowballAbility extends BossAbility
 
     private boolean isInSight(Player player)
     {
-        return customBoss.getEntity().hasLineOfSight(player);
+        return player != null && customBoss.getEntity().hasLineOfSight(player);
     }
 
     private void scheduleThrows(Class<? extends Projectile> projectileClass, Player targetPlayer, Sound sound)
