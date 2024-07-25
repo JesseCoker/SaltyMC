@@ -42,7 +42,7 @@ public class FlightSoup extends CustomItem
         lore.add(Component.text("Consumption allows you to fly"));
         lore.add(Component.text("for up to 30 minutes."));
         lore.add(Component.text("Flight is lost if you take"));
-        lore.add(Component.text("any damage or relog."));
+        lore.add(Component.text("any damage."));
         return lore;
     }
 
@@ -120,11 +120,5 @@ public class FlightSoup extends CustomItem
                 player.setAllowFlight(false);
             }
         }
-    }
-
-    @EventHandler
-    public void loginEvent(PlayerJoinEvent event)
-    {
-        event.getPlayer().setAllowFlight(false);
     }
 }
