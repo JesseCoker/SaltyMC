@@ -41,7 +41,7 @@ public class HerobrineMoveset
         else if (nextMove == 1)  new TNTRainAbility(plugin, customBoss).start();
         else if (nextMove == 2)  new SpawnEggAbility(plugin, customBoss, spawnables).start();
         else if (nextMove == 3)  new LightningAbility(plugin, customBoss).start();
-        else if (nextMove == 4)  new LavaBucketAbility(plugin, customBoss).start();
+        else if (nextMove == 4)  new FireItemAbility(plugin, customBoss).start();
         else if (nextMove == 5)
         {
             ItemStack herobrineBow = new HerobrineBow(plugin).getItem(1);
