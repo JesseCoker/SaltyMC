@@ -11,9 +11,9 @@ public class CustomBossBar
     private final LivingEntity bossEntity;
     private final int bossRange;
     private final BossBar bossBar;
-    private final int maxHealth;
+    private final double maxHealth;
 
-    public CustomBossBar(LivingEntity bossEntity, int maxHealth, int bossRange, TextComponent bossName, BossBar.Color barColor, BossBar.Overlay barOverlay)
+    public CustomBossBar(LivingEntity bossEntity, double maxHealth, int bossRange, TextComponent bossName, BossBar.Color barColor, BossBar.Overlay barOverlay)
     {
         this.bossEntity = bossEntity;
         this.bossRange = bossRange;

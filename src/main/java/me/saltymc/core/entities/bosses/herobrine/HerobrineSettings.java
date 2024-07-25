@@ -20,6 +20,11 @@ public class HerobrineSettings
         public static final double SIDE_HOP_VERTICAL_VELOCITY = 0.3f;
     }
 
+    public static class Heal
+    {
+        public static final double HEAL_AMOUNT = 50.0;
+    }
+
     public static class Teleport
     {
         public static final long TICKS_BETWEEN_RANDOM_TELEPORTS = 80L;

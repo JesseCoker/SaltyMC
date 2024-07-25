@@ -44,9 +44,9 @@ public class Nyx extends CustomBoss
     }
 
     @Override
-    protected int getMaxHealth()
+    protected double getMaxHealth()
     {
-        return 280;
+        return 280.0;
     }
 
     @Override
@@ -414,7 +414,7 @@ public class Nyx extends CustomBoss
     @EventHandler
     private void entityDamageByEntity(EntityDamageByEntityEvent event)
     {
-        super.onDamageBoss(event);
+        super.onDamage(event);
         Entity damagee = event.getEntity();
         Entity damager = event.getDamager();
         if (damagee instanceof Player && isMarked(damager))

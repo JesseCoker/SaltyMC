@@ -10,6 +10,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -18,6 +19,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTransformEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -37,9 +39,9 @@ public class Herobrine extends CustomBoss
     }
 
     @Override
-    protected int getMaxHealth()
+    protected double getMaxHealth()
     {
-        return 600;
+        return 600.0;
     }
 
     @Override
@@ -101,6 +103,7 @@ public class Herobrine extends CustomBoss
     private final HerobrineTeleport herobrineTeleport = new HerobrineTeleport(this);
     private final HerobrineBlockAttack herobrineBlockAttack = new HerobrineBlockAttack(this);
     private final HerobrineNetherSpread herobrineNetherSpread = new HerobrineNetherSpread(this);
+    private final HerobrineHeal herobrineHeal = new HerobrineHeal(this, herobrineSpeak);
 
     public HerobrineTeleport getHerobrineTeleport()
     {
@@ -153,14 +156,20 @@ public class Herobrine extends CustomBoss
     }
 
     @EventHandler
-    public void onDamageBoss(EntityDamageByEntityEvent event)
+    public void onDamage(EntityDamageByEntityEvent event)
     {
-        super.onDamageBoss(event);
+        super.onDamage(event);
         if (isThisEntity(event.getEntity()))
         {
             herobrineBlockAttack.cancelInvalidDamageByEntity(event);
             herobrineBlockAttack.blockValidAttacks(event);
         }
+    }
+
+    @EventHandler
+    public void onKillPlayer(PlayerDeathEvent event)
+    {
+        herobrineHeal.healOnKill(event);
     }
 
     @EventHandler

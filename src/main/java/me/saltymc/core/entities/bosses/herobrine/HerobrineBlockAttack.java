@@ -27,6 +27,7 @@ public class HerobrineBlockAttack
     {
         EntityDamageEvent.DamageCause damageCause = event.getCause();
         if (damageCause == EntityDamageEvent.DamageCause.ENTITY_ATTACK) return true;
+        if (damageCause == EntityDamageEvent.DamageCause.KILL) return true;
         if (damageCause == EntityDamageEvent.DamageCause.PROJECTILE)
         {
             Projectile projectile = (Projectile) event.getDamager();

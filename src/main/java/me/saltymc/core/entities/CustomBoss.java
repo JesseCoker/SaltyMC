@@ -40,7 +40,7 @@ abstract public class CustomBoss implements Listener
     // Abstracts
     abstract protected EntityType getEntityType();
 
-    abstract protected int getMaxHealth();
+    abstract protected double getMaxHealth();
 
     abstract protected double getMovementSpeed();
 
@@ -204,7 +204,7 @@ abstract public class CustomBoss implements Listener
         getEntity().getWorld().spawnParticle(particle, location, 120, null);
     }
 
-    protected boolean isThisEntity(Entity entity)
+    public boolean isThisEntity(Entity entity)
     {
         return bossEntity.getUniqueId().equals(entity.getUniqueId());
     }
@@ -228,7 +228,7 @@ abstract public class CustomBoss implements Listener
         return getEntity().launchProjectile(projectile, targetVector.subtract(bossVector).normalize().multiply(speed));
     }
 
-    protected void onDamageBoss(EntityDamageByEntityEvent event)
+    protected void onDamage(EntityDamageByEntityEvent event)
     {
         Entity damagee = event.getEntity();
         Entity damager = event.getDamager();

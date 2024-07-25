@@ -51,9 +51,9 @@ public class Sidero extends CustomBoss
     }
 
     @Override
-    protected int getMaxHealth()
+    protected double getMaxHealth()
     {
-        return 300;
+        return 300.0;
     }
 
     @Override
@@ -443,9 +443,9 @@ public class Sidero extends CustomBoss
     }
 
     @EventHandler
-    public void onDamageBoss(EntityDamageByEntityEvent event)
+    public void onDamage(EntityDamageByEntityEvent event)
     {
-        super.onDamageBoss(event);
+        super.onDamage(event);
 
         Entity damagee = event.getEntity();
         Entity damager = event.getDamager();
