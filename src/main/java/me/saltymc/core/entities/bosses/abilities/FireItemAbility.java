@@ -4,6 +4,7 @@ import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -32,13 +33,21 @@ public class FireItemAbility extends BossAbility
         {
             customBoss.equipItemInOffHand(new ItemStack(Material.LAVA_BUCKET));
             boolean isInRange = playerIsInRange(nearestPlayer, LAVA_BUCKET_PLACE_RANGE);
-            if (isInRange) useItem(nearestPlayer.getLocation(), Material.LAVA);
+            if (isInRange)
+            {
+                useItem(nearestPlayer.getLocation(), Material.FIRE);
+                customBoss.playSound(customBoss.getEntity().getLocation(), Sound.ITEM_BUCKET_EMPTY_LAVA);
+            }
         }
         else
         {
             customBoss.equipItemInOffHand(new ItemStack(Material.FLINT_AND_STEEL));
             boolean isInRange = playerIsInRange(nearestPlayer, FLINT_AND_STEEL_PLACE_RANGE);
-            if (isInRange) useItem(nearestPlayer.getLocation(), Material.FIRE);
+            if (isInRange)
+            {
+                useItem(nearestPlayer.getLocation(), Material.FIRE);
+                customBoss.playSound(customBoss.getEntity().getLocation(), Sound.ITEM_FLINTANDSTEEL_USE);
+            }
         }
     }
 

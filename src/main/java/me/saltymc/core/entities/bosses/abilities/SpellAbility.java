@@ -4,6 +4,7 @@ import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.items.weapon.AncientSpell;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
@@ -26,6 +27,7 @@ public class SpellAbility extends BossAbility
         if (isInRange(nearestPlayer))
         {
             shootSpell(nearestPlayer.getLocation());
+            customBoss.playSound(customBoss.getEntity().getLocation(), Sound.ENTITY_BLAZE_SHOOT);
         }
     }
 
