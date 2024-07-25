@@ -24,22 +24,14 @@ public class HerobrineSpeak
 
     static
     {
+        // Boss dialogue
         lines.add(Component.text("You have made a terrible mistake.").color(NamedTextColor.RED));
-        lines.add(Component.text("Now you will come with me to hell.").color(NamedTextColor.RED));
-        lines.add(Component.text("There is no use trying to survive.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
-        lines.add(Component.text("This is the end for you.").color(NamedTextColor.RED));
+        lines.add(Component.text("Now you will come with me to the nether.").color(NamedTextColor.RED));
+        lines.add(Component.text("Your efforts are futile.").color(NamedTextColor.RED));
+        lines.add(Component.text("Despair, for there is no hope.").color(NamedTextColor.RED));
+        lines.add(Component.text("I will end this world.").color(NamedTextColor.RED));
+        lines.add(Component.text("Say goodbye.").color(NamedTextColor.RED));
+        lines.add(Component.text("I will consume the souls of every living being.").color(NamedTextColor.RED));
     }
 
     public void nextSpeech()
