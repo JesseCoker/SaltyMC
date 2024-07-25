@@ -27,6 +27,8 @@ public class HerobrineSummon implements Listener
         HerobrineSummon.plugin = plugin;
     }
 
+    private static final int MIN_SUMMON_DISTANCE = 3000;
+
     private static final Vector[] relativeGoldBlockPositions = {
             new Vector(-1, -1, 0),
             new Vector(1, -1, 0),
@@ -88,7 +90,8 @@ public class HerobrineSummon implements Listener
                 TextComponent part2 = Component.text("shiny gem").color(NamedTextColor.LIGHT_PURPLE);
                 TextComponent part3 = Component.text(", and a ").color(NamedTextColor.GRAY);
                 TextComponent part4 = Component.text("block infused with the air of the new world.").color(TextColor.color(43, 181, 135));
-                player.sendMessage(part1.append(part2).append(part3).append(part4));
+                TextComponent part5 = Component.text("\nMust be at least 3,000 blocks from spawn.").color(NamedTextColor.DARK_RED);
+                player.sendMessage(part1.append(part2).append(part3).append(part4).append(part5));
             }
         }
     }
@@ -155,6 +158,18 @@ public class HerobrineSummon implements Listener
             amethystSacraficeLocation = combuster.getLocation();
             messageNearbyPlayers(combuster, Component.text("I will accept this amethyst shard."));
             entity.remove();
+        }
+
+        attemptSummon(combuster);
+    }
+
+    private void attemptSummon(Block combuster)
+    {
+        Location spawnPoint = new Location(combuster.getWorld(), 0.0, 0.0, 0.0);
+        if (combuster.getLocation().distance(spawnPoint) < MIN_SUMMON_DISTANCE)
+        {
+            messageNearbyPlayers(combuster, Component.text("Cannot summon him here..").color(NamedTextColor.DARK_RED));
+            return;
         }
 
         if (copperSacraficeLocation != null && copperSacraficeLocation.equals(amethystSacraficeLocation))
