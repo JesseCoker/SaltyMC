@@ -3,6 +3,7 @@ package me.saltymc.core.entities.bosses.herobrine;
 import me.saltymc.core.Main;
 import me.saltymc.core.entities.CustomBoss;
 import me.saltymc.core.helpers.HeadGetter;
+import me.saltymc.core.items.item.DespisedSoulFragment;
 import me.saltymc.core.items.weapon.HerobrineAxe;
 import me.saltymc.core.items.weapon.HerobrineSword;
 import net.kyori.adventure.bossbar.BossBar;
@@ -10,7 +11,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -155,6 +156,15 @@ public class Herobrine extends CustomBoss
         }
     }
 
+    private void dropDespisedSoul()
+    {
+        if (random.nextInt(HerobrineSettings.DropItem.DROP_DESPISED_SOUL_CHANCE) == 0)
+        {
+            Location location = getEntity().getLocation();
+            location.getWorld().dropItemNaturally(location, new DespisedSoulFragment(plugin).getItem(1));
+        }
+    }
+
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event)
     {
@@ -178,6 +188,7 @@ public class Herobrine extends CustomBoss
         if (isThisEntity(event.getEntity()))
         {
             herobrineBlockAttack.cancelInvalidDamage(event);
+            dropDespisedSoul();
         }
     }
 
