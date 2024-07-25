@@ -10,6 +10,7 @@ public class PositionHelper
 
     public static Location getRandomLocationInCircle(Location targetLocation, int radius)
     {
+        if (radius == 0) radius = 1;
         double randomDistance = random.nextInt(radius);
         double randomAngle = Math.toRadians(random.nextInt(360));
         double xOffset = randomDistance * Math.cos(randomAngle);
