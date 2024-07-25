@@ -22,23 +22,25 @@ public class EggAndSnowballAbility extends BossAbility
         super(plugin, customBoss);
     }
 
+    private static final Random random = new Random();
+
     private static final double PROJECTILE_SPEED = 1.4;
-    private static final long THROW_DELAY = 30L;
+    private static final int MAX_PROJECTILES = 12;
+    private static final long INITIAL_THROW_DELAY = 30L;
+    private static final long DELAY_BETWEEN_THROWS = 4L;
 
     @Override
     public void start()
     {
         Player nearestPlayer = customBoss.getNearestPlayer();
 
-        Random random = new Random();
         boolean isSnowball = random.nextBoolean();
         if (isSnowball)
         {
             customBoss.equipItemInOffHand(new ItemStack(Material.SNOWBALL));
             if (isInSight(nearestPlayer))
             {
-                Bukkit.getScheduler().runTaskLater(plugin,
-                        ()->throwProjectile(Snowball.class, nearestPlayer.getLocation(), Sound.ENTITY_SNOWBALL_THROW), THROW_DELAY);
+                scheduleThrows(Snowball.class, nearestPlayer.getLocation(), Sound.ENTITY_SNOWBALL_THROW);
             }
         }
         else
@@ -46,8 +48,7 @@ public class EggAndSnowballAbility extends BossAbility
             customBoss.equipItemInOffHand(new ItemStack(Material.EGG));
             if (isInSight(nearestPlayer))
             {
-                Bukkit.getScheduler().runTaskLater(plugin,
-                        ()->throwProjectile(Egg.class, nearestPlayer.getLocation(), Sound.ENTITY_EGG_THROW), THROW_DELAY);
+                scheduleThrows(Egg.class, nearestPlayer.getLocation(), Sound.ENTITY_EGG_THROW);
             }
         }
 
@@ -56,6 +57,15 @@ public class EggAndSnowballAbility extends BossAbility
     private boolean isInSight(Player player)
     {
         return customBoss.getEntity().hasLineOfSight(player);
+    }
+
+    private void scheduleThrows(Class<? extends Projectile> projectileClass, Location location, Sound sound)
+    {
+        int numberOfThrows = random.nextInt(MAX_PROJECTILES);
+        for (int index = 0; index < numberOfThrows; ++index)
+        {
+            Bukkit.getScheduler().runTaskLater(plugin, ()->throwProjectile(projectileClass, location, sound), INITIAL_THROW_DELAY + DELAY_BETWEEN_THROWS * index);
+        }
     }
 
     private void throwProjectile(Class<? extends Projectile> projectileClass, Location location, Sound sound)

@@ -4,6 +4,7 @@ import me.saltymc.core.entities.CustomBoss;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Sound;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class HerobrineSpeak
     public void say(TextComponent textComponent)
     {
         customBoss.getNearbyPlayers().forEach(player -> {
-            player.sendMessage(textComponent);
+            player.sendMessage((Component.text("Herobrine: ").append(textComponent)).decorate(TextDecoration.BOLD));
             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_SCREAM, 1.0f, 0.2f);
         });
     }
